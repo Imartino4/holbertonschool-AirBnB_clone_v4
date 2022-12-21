@@ -8,11 +8,12 @@
     <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css?{{ cache_id }}">
     <link type="text/css" rel="stylesheet" href="../static/styles/8-places.css?{{ cache_id }}">
     <link rel="icon" href="../static/images/icon.png" />
-	<script src="../static/scripts/1-hbnb.js?{{ cache_id }}"></script>
+	<script src="../static/scripts/2-hbnb.js?{{ cache_id }}"></script>
     <title>HBnB</title>
   </head>
   <body>
     <header>
+	  <div id="api_status" style="float: right; align-items: center; width: 40px; height: 40px; background-color: #cccccc; border-radius: 50%; position: relative; top:50%; transform: translateY(-50%); margin-right: 30px;"></div>
       <div class="logo"></div>
     </header>
     <div class="container">
@@ -43,7 +44,7 @@
 	      {% for amenity in amenities %}
 	      <li> <input 
 			type="checkbox" 
-			style="margin-left: 10px"
+			style="margin-right: 10px"
 			data-id=":amenity_id"
 			data-name="{{ amenity.name }}"> {{ amenity.name }}
 		</li>

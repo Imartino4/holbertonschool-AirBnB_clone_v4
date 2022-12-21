@@ -22,3 +22,14 @@ window.onload = function () {
         })
     }
 }
+
+const request = require('request');
+
+request("http://0.0.0.0:5001/api/v1/status/", function (res) {
+    element = document.querySelector('#api_status')
+    if (res.status == 'OK')
+        element.classList.add("available");
+    else
+        element.classList.remove("available");
+
+})
