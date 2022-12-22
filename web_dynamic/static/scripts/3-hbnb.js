@@ -25,15 +25,13 @@ window.onload = function () {
 
 const request = require('request');
 
-request("http://localhost:5001/api/v1/status/", function (res, err) {
+request("http://localhost:5001/api/v1/status/", function (res) {
     element = document.querySelector('#api_status')
-    // element.style.backgroundColor = '#ff545f'
-    if (err){
-        throw err
-    }
     if (res.status === 'OK')
         element.classList.add("available");
     else
         element.classList.remove("available");
 
 })
+
+request("http://0.0.0.0:5001/api/v1/places_search/")
