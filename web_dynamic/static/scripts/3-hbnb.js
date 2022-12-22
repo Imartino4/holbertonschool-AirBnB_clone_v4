@@ -34,4 +34,20 @@ request("http://localhost:5001/api/v1/status/", function (res) {
 
 })
 
-request("http://0.0.0.0:5001/api/v1/places_search/")
+// Task 4
+
+body_dic = {}
+fetch("http://0.0.0.0:5001/api/v1/places_search/", {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body_dic)
+})
+.then((response) => response.json())
+.then((data)) => {
+    a
+    a
+    a
+    a
+}
