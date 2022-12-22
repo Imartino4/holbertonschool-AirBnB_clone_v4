@@ -21,19 +21,18 @@ window.onload = function () {
             a_h4.innerHTML = final_list;
         })
     }
+    
+
+    const element = document.getElementById('api_status');
+    console.log(element)
+    fetch("http://localhost:5001/api/v1/status/")
+    .then(data => {
+        console.log(data.status)
+        if (data.status === 200){
+            element.classList.add("available");
+        }
+        else {
+            element.classList.remove("available");
+        }
+    })
 }
-
-const request = require('request');
-
-request("http://localhost:5001/api/v1/status/", function (res, err) {
-    element = document.querySelector('#api_status')
-    // element.style.backgroundColor = '#ff545f'
-    if (err){
-        throw err
-    }
-    if (res.status === 'OK')
-        element.classList.add("available");
-    else
-        element.classList.remove("available");
-
-})

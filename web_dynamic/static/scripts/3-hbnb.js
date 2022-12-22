@@ -21,33 +21,35 @@ window.onload = function () {
             a_h4.innerHTML = final_list;
         })
     }
-}
-
-const request = require('request');
-
-request("http://localhost:5001/api/v1/status/", function (res) {
-    element = document.querySelector('#api_status')
-    if (res.status === 'OK')
-        element.classList.add("available");
-    else
-        element.classList.remove("available");
-
-})
-
-// Task 4
-
-body_dic = {}
-fetch("http://0.0.0.0:5001/api/v1/places_search/", {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body_dic)
-})
-.then((response) => response.json())
-.then((data)) => {
-    a
-    a
-    a
-    a
+    
+    const element = document.getElementById('api_status');
+    console.log(element)
+    fetch("http://localhost:5001/api/v1/status/")
+    .then(data => {
+        console.log(data.status)
+        if (data.status === 200){
+            element.classList.add("available");
+        }
+        else {
+            element.classList.remove("available");
+        }
+    })
+    
+    // Task 4
+    
+    body_dic = {};
+    fetch("http://localhost:5001/api/v1/places_search/", {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body_dic)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+                console.log(data);
+                //iria lo de places
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        })
+                
 }
