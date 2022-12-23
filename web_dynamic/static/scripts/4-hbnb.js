@@ -25,10 +25,10 @@ window.onload = function () {
     });
   }
   const element = document.getElementById('api_status');
-  console.log(element);
+  // console.log(element);
   fetch('http://localhost:5001/api/v1/status/')
     .then(data => {
-      console.log(data.status);
+      // console.log(data.status);
       if (data.status === 200) {
         element.classList.add('available');
       } else {
@@ -45,8 +45,6 @@ window.onload = function () {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      // iria lo de places
       for (const place of data) {
         places.innerHTML += `
           <article>
@@ -76,6 +74,26 @@ window.onload = function () {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({id: id_list})
-    });
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      for (const place of data) {
+        places.innerHTML += `
+          <article>
+              <div class='title_box'>
+                  <h2>${place.name}</h2>
+                  <div class='price_by_night'>$${place.price_by_night}</div>
+              </div>
+              <div class='information'>
+                  <div class='max_guest'>${place.max_guest} Guest${place.max_guest !== 1 ? 's' : ''}</div>
+                  <div class='number_rooms'>${place.number_rooms} Bedroom${place.number_rooms !== 1 ? 's' : ''}</div>
+                  <div class='number_bathrooms'>${place.number_bathrooms} Bathroom${place.number_bathrooms !== 1 ? 's' : ''}</div>
+              </div>
+              <div class='description'>
+                  ${place.description}
+              </div>
+          </article> `;
+      }
+    })
   });
-};
+}
